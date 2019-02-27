@@ -16,7 +16,7 @@
 
 package ivorius.ivtoolkit.rendering.textures;
 
-import net.minecraft.client.resources.IResourceManager;
+import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import org.apache.logging.log4j.Logger;
 

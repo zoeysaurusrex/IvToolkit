@@ -5,6 +5,7 @@
 
 package ivorius.ivtoolkit.network;
 
+import com.sun.xml.internal.ws.api.handler.MessageHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -13,7 +14,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SchedulingMessageHandler<REQ extends IMessage, REPLY extends IMessage> implements IMessageHandler<REQ, REPLY>
+public class SchedulingMessageHandler<REQ extends IMessage, REPLY extends IMessage> implements MessageHandler<REQ, REPLY>
 {
     @Override
     public REPLY onMessage(REQ message, MessageContext ctx)

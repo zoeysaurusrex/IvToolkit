@@ -23,14 +23,12 @@ import ivorius.ivtoolkit.tools.EnumFacingHelper;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.util.Constants;
-import org.lwjgl.util.vector.Vector3f;
 
 import javax.annotation.Nullable;
 
@@ -41,11 +39,11 @@ public class IvTileEntityRotatable extends TileEntity
     @Override
     public void readFromNBT(NBTTagCompound tagCompound)
     {
-        super.readFromNBT(tagCompound);
+        super.read(tagCompound);
 
         if (tagCompound.hasKey("direction", Constants.NBT.TAG_INT)) // Legacy
         {
-            switch (tagCompound.getInteger("direction"))
+            switch (tagCompound.getInt("direction"))
             {
                 case 0:
                     facing = EnumFacing.SOUTH;
@@ -66,7 +64,7 @@ public class IvTileEntityRotatable extends TileEntity
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound tagCompound)
     {
-        super.writeToNBT(tagCompound);
+        super.write(tagCompound);
 
         tagCompound.setString("facing", facing.getName());
 

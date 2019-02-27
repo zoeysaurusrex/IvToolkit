@@ -20,7 +20,7 @@ import com.google.common.primitives.Ints;
 import ivorius.ivtoolkit.IvToolkit;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.INBTBase;
 import net.minecraft.nbt.NBTPrimitive;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -34,7 +34,7 @@ public class NBTStateInjector
 {
     public static final String ID_FIX_TAG_KEY = "SG_ID_FIX_TAG";
 
-    public static void recursivelyInject(NBTBase nbt)
+    public static void recursivelyInject(INBTBase nbt)
     {
         NBTWalker.walkCompounds(nbt, cmp ->
         {
@@ -93,7 +93,7 @@ public class NBTStateInjector
         }
     }
 
-    public static void recursivelyApply(NBTBase nbt, MCRegistry registry, boolean remove)
+    public static void recursivelyApply(INBTBase nbt, MCRegistry registry, boolean remove)
     {
         NBTWalker.walkCompounds(nbt, cmp ->
         {
@@ -139,7 +139,7 @@ public class NBTStateInjector
 
                 Block block = registry.blockFromID(blockID);
                 if (block != null)
-                    compound.setInteger(dest, Block.getIdFromBlock(block));
+                    compound.setInt(dest, Block.getIdFromBlock(block));
                 else
                     IvToolkit.logger.warn("Failed to fix block tag from structure with ID '" + fixTag.getString("blockID") + "'");
                 break;

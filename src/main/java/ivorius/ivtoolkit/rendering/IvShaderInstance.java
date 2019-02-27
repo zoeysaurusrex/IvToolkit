@@ -24,6 +24,8 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.*;
 
+import javax.vecmath.Matrix3f;
+import javax.vecmath.Matrix4f;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -221,16 +223,16 @@ public class IvShaderInstance
         switch (typeLength)
         {
             case 1:
-                OpenGlHelper.glUniform1(getUniformLocation(key), floatBuffer);
+                OpenGlHelper.glUniform1fv(getUniformLocation(key), floatBuffer);
                 break;
             case 2:
-                OpenGlHelper.glUniform2(getUniformLocation(key), floatBuffer);
+                OpenGlHelper.glUniform2fv(getUniformLocation(key), floatBuffer);
                 break;
             case 3:
-                OpenGlHelper.glUniform3(getUniformLocation(key), floatBuffer);
+                OpenGlHelper.glUniform3fv(getUniformLocation(key), floatBuffer);
                 break;
             case 4:
-                OpenGlHelper.glUniform4(getUniformLocation(key), floatBuffer);
+                OpenGlHelper.glUniform4fv(getUniformLocation(key), floatBuffer);
                 break;
             default:
                 throw new IllegalArgumentException();
@@ -263,13 +265,13 @@ public class IvShaderInstance
         switch (width)
         {
             case 2:
-                OpenGlHelper.glUniformMatrix2(getUniformLocation(key), false, floatBuffer);
+                OpenGlHelper.glUniformMatrix2fv(getUniformLocation(key), false, floatBuffer);
                 break;
             case 3:
-                OpenGlHelper.glUniformMatrix3(getUniformLocation(key), false, floatBuffer);
+                OpenGlHelper.glUniformMatrix3fv(getUniformLocation(key), false, floatBuffer);
                 break;
             default:
-                OpenGlHelper.glUniformMatrix4(getUniformLocation(key), false, floatBuffer);
+                OpenGlHelper.glUniformMatrix4fv(getUniformLocation(key), false, floatBuffer);
                 break;
         }
 
@@ -347,7 +349,7 @@ public class IvShaderInstance
         logger.info(String.format("%-20s: %s", category, info));
     }
 
-    private static String getGLVersions(ContextCapabilities cap)
+    private static String getGLVersions(GLCapabilities cap)
     {
         String versions = "";
 

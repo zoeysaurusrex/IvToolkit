@@ -17,11 +17,11 @@
 package ivorius.ivtoolkit.rendering.textures;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ThreadDownloadImageData;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.LayeredTexture;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.client.resources.IResourceManager;
+import net.minecraft.client.renderer.texture.ThreadDownloadImageData;
+import net.minecraft.resources.IResource;
+import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.apache.logging.log4j.Logger;
@@ -40,7 +40,7 @@ public class IvTextureCreatorMC
 {
     public static BufferedImage getImage(IResourceManager resourceManager, ResourceLocation location, Logger logger) throws IOException
     {
-        ITextureObject textureObject = Minecraft.getMinecraft().getTextureManager().getTexture(location);
+        ITextureObject textureObject = Minecraft.getInstance().getTextureManager().getTexture(location);
 
         if (textureObject instanceof ThreadDownloadImageData)
         {

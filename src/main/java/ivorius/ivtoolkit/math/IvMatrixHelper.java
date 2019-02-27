@@ -16,9 +16,7 @@
 
 package ivorius.ivtoolkit.math;
 
-import org.lwjgl.util.vector.Matrix4f;
-import org.lwjgl.util.vector.Vector3f;
-import org.lwjgl.util.vector.Vector4f;
+import net.minecraft.client.renderer.*;
 
 /**
  * Created by lukas on 07.03.14.
