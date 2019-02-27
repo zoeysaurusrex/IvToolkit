@@ -18,7 +18,7 @@ package ivorius.ivtoolkit.rendering;
 
 import com.google.common.base.Charsets;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IResource;
+import net.minecraft.resources.IResource;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.io.IOUtils;
 
@@ -43,8 +43,8 @@ public class IvShaderInstanceMC
 
         try
         {
-            vShaderRes = Minecraft.getMinecraft().getResourceManager().getResource(vertexShader);
-            fShaderRes = Minecraft.getMinecraft().getResourceManager().getResource(fragmentShader);
+            vShaderRes = Minecraft.getInstance().getResourceManager().getResource(vertexShader);
+            fShaderRes = Minecraft.getInstance().getResourceManager().getResource(fragmentShader);
         }
         catch (IOException e)
         {

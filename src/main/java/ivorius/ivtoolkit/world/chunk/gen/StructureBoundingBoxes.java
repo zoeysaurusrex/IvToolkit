@@ -16,10 +16,10 @@
 
 package ivorius.ivtoolkit.world.chunk.gen;
 
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.gen.structure.StructureBoundingBox;
 
 import javax.annotation.Nonnull;
 import java.util.Collections;
@@ -31,7 +31,7 @@ import java.util.Set;
  */
 public class StructureBoundingBoxes
 {
-    public static Set<ChunkPos> rasterize(StructureBoundingBox boundingBox)
+    public static Set<ChunkPos> rasterize(AxisAlignedBB boundingBox)
     {
         if (boundingBox != null)
         {
@@ -52,33 +52,33 @@ public class StructureBoundingBoxes
         return Collections.emptySet();
     }
 
-    public static boolean fitsY(StructureBoundingBox boundingBox, int minY, int maxY)
+    public static boolean fitsY(AxisAlignedBB boundingBox, int minY, int maxY)
     {
         return boundingBox.minY >= minY && boundingBox.maxY < maxY;
     }
 
     @Nonnull
-    public static StructureBoundingBox wholeHeightBoundingBox(WorldServer world, StructureBoundingBox generationBB)
+    public static AxisAlignedBB wholeHeightBoundingBox(WorldServer world, AxisAlignedBB generationBB)
     {
-        StructureBoundingBox toFloorBB = new StructureBoundingBox(generationBB);
+        AxisAlignedBB toFloorBB = new AxisAlignedBB(generationBB);
         toFloorBB.minY = 1;
         toFloorBB.maxY = world.getHeight();
         return toFloorBB;
     }
 
     @Nonnull
-    public static BlockPos min(StructureBoundingBox boundingBox)
+    public static BlockPos min(AxisAlignedBB boundingBox)
     {
         return new BlockPos(boundingBox.minX, boundingBox.minY, boundingBox.minZ);
     }
 
     @Nonnull
-    public static BlockPos max(StructureBoundingBox boundingBox)
+    public static BlockPos max(AxisAlignedBB boundingBox)
     {
         return new BlockPos(boundingBox.maxX, boundingBox.maxY, boundingBox.maxZ);
     }
 
-    public static int[] size(StructureBoundingBox boundingBox)
+    public static int[] size(AxisAlignedBB boundingBox)
     {
         return new int[]{boundingBox.getXSize(), boundingBox.getYSize(), boundingBox.getZSize()};
     }

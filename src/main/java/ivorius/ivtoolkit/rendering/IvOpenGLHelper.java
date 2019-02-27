@@ -24,7 +24,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL20;
-import org.lwjgl.util.glu.GLU;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -75,7 +74,7 @@ public class IvOpenGLHelper
         GlStateManager.ortho(0.0D, screenWidth, screenHeight, 0.0D, 1000.0D, 3000.0D);
         GlStateManager.matrixMode(GL11.GL_MODELVIEW);
         GlStateManager.loadIdentity();
-        GlStateManager.translate(0.0F, 0.0F, -2000.0F);
+        GlStateManager.translatef(0.0F, 0.0F, -2000.0F);
     }
 
     public static void checkGLError(Logger logger, String category)
@@ -83,7 +82,7 @@ public class IvOpenGLHelper
         int error;
         while ((error = GL11.glGetError()) != 0)
         {
-            String s1 = GLU.gluErrorString(error);
+            String s1 = OpenGlHelper.getErrorMessage(error);
             logger.error("########## GL ERROR ##########");
             logger.error("@ " + category);
             logger.error(error + ": " + s1);

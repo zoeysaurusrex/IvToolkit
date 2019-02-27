@@ -18,8 +18,7 @@
 
 package ivorius.ivtoolkit.models.loaders.g3d;
 
-import org.lwjgl.util.vector.Quaternion;
-import org.lwjgl.util.vector.Vector3f;
+import net.minecraft.client.renderer.*;
 
 public class G3DNode
 {

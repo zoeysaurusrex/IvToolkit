@@ -21,10 +21,10 @@ import ivorius.ivtoolkit.math.AxisAlignedTransform2D;
 import ivorius.ivtoolkit.math.MinecraftTransforms;
 import ivorius.ivtoolkit.tools.EntityCreatureAccessor;
 import net.minecraft.block.Block;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.state.IProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.Mirror;
@@ -78,7 +78,7 @@ public class PosTransformer
 
     public static IBlockState transformBlockState(IBlockState state, AxisAlignedTransform2D transform)
     {
-        return MinecraftTransforms.map(transform, (rotation, mirror) -> state.withMirror(mirror).withRotation(rotation));
+        return MinecraftTransforms.map(transform, (rotation, mirror) -> state.mirror(mirror).rotate(rotation));
     }
 
     @Deprecated

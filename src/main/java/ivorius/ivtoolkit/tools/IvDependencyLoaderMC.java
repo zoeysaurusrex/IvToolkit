@@ -18,8 +18,7 @@ package ivorius.ivtoolkit.tools;
 
 import com.google.common.base.Charsets;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IResource;
-import net.minecraft.client.resources.IResourceManager;
+import net.minecraft.resources.*;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.io.IOUtils;
 
@@ -38,7 +37,7 @@ public class IvDependencyLoaderMC extends IvDependencyLoader
     {
         try
         {
-            IResourceManager resourceManager = Minecraft.getMinecraft().getResourceManager();
+            IResourceManager resourceManager = Minecraft.getInstance().getResourceManager();
             IResource vShaderRes = resourceManager.getResource(new ResourceLocation(location));
             return IOUtils.toString(vShaderRes.getInputStream(), Charsets.UTF_8);
         }

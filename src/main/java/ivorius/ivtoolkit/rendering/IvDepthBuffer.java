@@ -18,12 +18,8 @@ package ivorius.ivtoolkit.rendering;
 
 import net.minecraft.client.renderer.OpenGlHelper;
 import org.apache.logging.log4j.Logger;
-import org.lwjgl.opengl.ARBMultitexture;
+import org.lwjgl.opengl.*;
 import net.minecraft.client.renderer.GlStateManager;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-import org.lwjgl.opengl.GL14;
-import org.lwjgl.util.glu.GLU;
 
 import java.nio.ByteBuffer;
 
@@ -189,9 +185,8 @@ public class IvDepthBuffer
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_COMPARE_MODE, GL11.GL_NONE);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL14.GL_DEPTH_TEXTURE_MODE, GL11.GL_LUMINANCE);
 
-        OpenGlHelper.setActiveTexture(glTexture);
+        OpenGlHelper.glActiveTexture(glTexture);
         GlStateManager.bindTexture(textureIndex);
-        OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB);
     }
 
     public static void bindTextureForDestination(int textureIndex)
@@ -223,6 +218,6 @@ public class IvDepthBuffer
 
     public static String getFramebufferStatusString(int code)
     {
-        return code + ": " + GLU.gluErrorString(code);
+        return code + ": " + OpenGlHelper.getErrorMessage(code);
     }
 }

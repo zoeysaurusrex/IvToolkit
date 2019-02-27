@@ -20,6 +20,7 @@ package ivorius.ivtoolkit.blocks;
 import ivorius.ivtoolkit.math.IvMathHelper;
 import ivorius.ivtoolkit.raytracing.IvRaytraceableAxisAlignedBox;
 import ivorius.ivtoolkit.tools.EnumFacingHelper;
+import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;

@@ -21,8 +21,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -73,13 +73,13 @@ public abstract class IvFMLIntercommHandler
 
     public void handleMessages(boolean server, boolean runtime)
     {
-        for (FMLInterModComms.IMCMessage message : FMLInterModComms.fetchRuntimeMessages(modInstance))
+        for (InterModComms.IMCMessage message : InterModComms.fetchRuntimeMessages(modInstance))
         {
             onIMCMessage(message, server, true);
         }
     }
 
-    public void onIMCMessage(FMLInterModComms.IMCMessage message, boolean server, boolean runtime)
+    public void onIMCMessage(InterModComms.IMCMessage message, boolean server, boolean runtime)
     {
         try
         {
@@ -97,9 +97,9 @@ public abstract class IvFMLIntercommHandler
         }
     }
 
-    protected abstract boolean handleMessage(FMLInterModComms.IMCMessage message, boolean server, boolean runtime);
+    protected abstract boolean handleMessage(InterModComms.IMCMessage message, boolean server, boolean runtime);
 
-    protected boolean isMessage(String key, FMLInterModComms.IMCMessage message, Class expectedType)
+    protected boolean isMessage(String key, InterModComms.IMCMessage message, Class expectedType)
     {
         if (key.equals(message.key))
         {
@@ -123,15 +123,15 @@ public abstract class IvFMLIntercommHandler
     {
         if (!server)
         {
-            return Minecraft.getMinecraft().world.getEntityByID(compound.getInteger(entityKey));
+            return Minecraft.getInstance().world.getEntityByID(compound.getInt(entityKey));
         }
         else
         {
-            return FMLCommonHandler.instance().getSidedDelegate().getServer().getWorld(compound.getInteger(worldKey)).getEntityByID(compound.getInteger(entityKey));
+            return Minecraft.getInstance().world.getServer().getWorld(compound.getInt(worldKey)).getEntityByID(compound.getInt(entityKey));
         }
     }
 
-    protected boolean sendReply(FMLInterModComms.IMCMessage message, String value)
+    protected boolean sendReply(InterModComms.IMCMessage message, String value)
     {
         if (message.getSender() == null)
         {
@@ -143,7 +143,7 @@ public abstract class IvFMLIntercommHandler
         return true;
     }
 
-    protected boolean sendReply(FMLInterModComms.IMCMessage message, NBTTagCompound value)
+    protected boolean sendReply(InterModComms.IMCMessage message, NBTTagCompound value)
     {
         if (message.getSender() == null)
         {
@@ -155,7 +155,7 @@ public abstract class IvFMLIntercommHandler
         return true;
     }
 
-    protected boolean sendReply(FMLInterModComms.IMCMessage message, ItemStack value)
+    protected boolean sendReply(InterModComms.IMCMessage message, ItemStack value)
     {
         if (message.getSender() == null)
         {
@@ -168,7 +168,7 @@ public abstract class IvFMLIntercommHandler
         return true;
     }
 
-    private void faultyMessage(FMLInterModComms.IMCMessage message, Class expectedType)
+    private void faultyMessage(InterModComms.IMCMessage message, Class expectedType)
     {
         logger.error("Got message with key '" + message.key + "' of type '" + message.getMessageType().getName() + "'; Expected type: '" + expectedType.getName() + "'");
     }

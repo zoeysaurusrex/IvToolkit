@@ -18,7 +18,7 @@ package ivorius.ivtoolkit.rendering.textures;
 
 import net.minecraft.client.renderer.texture.AbstractTexture;
 import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.IResourceManager;
+import net.minecraft.resources.IResourceManager;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

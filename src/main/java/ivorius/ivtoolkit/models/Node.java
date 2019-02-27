@@ -19,9 +19,7 @@
 package ivorius.ivtoolkit.models;
 
 import ivorius.ivtoolkit.models.utils.MatrixMathUtils;
-import org.lwjgl.util.vector.Matrix4f;
-import org.lwjgl.util.vector.Quaternion;
-import org.lwjgl.util.vector.Vector3f;
+import net.minecraft.client.renderer.*;
 
 import java.util.ArrayList;
 import java.util.List;

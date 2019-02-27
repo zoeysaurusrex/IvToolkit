@@ -18,8 +18,7 @@
 
 package ivorius.ivtoolkit.models;
 
-import org.lwjgl.util.vector.Quaternion;
-import org.lwjgl.util.vector.Vector3f;
+import net.minecraft.client.renderer.*;
 
 /**
  * Created by lukas on 22.09.14.

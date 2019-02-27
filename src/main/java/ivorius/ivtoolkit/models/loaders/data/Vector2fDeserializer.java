@@ -22,8 +22,8 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import org.lwjgl.util.vector.Vector2f;
 
+import javax.vecmath.Vector2f;
 import java.lang.reflect.Type;
 
 /**

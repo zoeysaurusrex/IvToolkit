@@ -33,7 +33,7 @@ import java.util.stream.IntStream;
  */
 public class NBTTagLists
 {
-    public static List<NBTBase> nbtBases(NBTTagList nbt)
+    public static List<INBTBase> nbtBases(NBTTagList nbt)
     {
         return IntStream.range(0, nbt.tagCount()).mapToObj(nbt::get).collect(Collectors.toList());
     }

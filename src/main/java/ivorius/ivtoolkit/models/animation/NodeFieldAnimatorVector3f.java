@@ -18,7 +18,7 @@
 
 package ivorius.ivtoolkit.models.animation;
 
-import org.lwjgl.util.vector.Vector3f;
+import net.minecraft.client.renderer.Vector3f;
 
 /**
  * Created by lukas on 23.09.14.

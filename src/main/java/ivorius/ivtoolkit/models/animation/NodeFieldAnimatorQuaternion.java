@@ -18,7 +18,7 @@
 
 package ivorius.ivtoolkit.models.animation;
 
-import org.lwjgl.util.vector.Quaternion;
+import net.minecraft.client.renderer.Quaternion;
 
 /**
  * Created by lukas on 23.09.14.

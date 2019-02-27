@@ -21,8 +21,7 @@ package ivorius.ivtoolkit.models.animation;
 import ivorius.ivtoolkit.models.Node;
 import ivorius.ivtoolkit.models.NodeAnimation;
 import ivorius.ivtoolkit.models.NodeKeyframe;
-import org.lwjgl.util.vector.Quaternion;
-import org.lwjgl.util.vector.Vector3f;
+import net.minecraft.client.renderer.*;
 
 /**
  * Created by lukas on 23.09.14.

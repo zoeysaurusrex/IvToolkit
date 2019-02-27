@@ -18,7 +18,7 @@
 
 package ivorius.ivtoolkit.models.loaders.g3d;
 
-import org.lwjgl.util.vector.Vector2f;
+import javax.vecmath.Vector2f;
 
 public class G3DTexture
 {

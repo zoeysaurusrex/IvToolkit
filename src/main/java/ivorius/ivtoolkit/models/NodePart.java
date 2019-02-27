@@ -19,7 +19,7 @@
 package ivorius.ivtoolkit.models;
 
 import ivorius.ivtoolkit.models.utils.ArrayMap;
-import org.lwjgl.util.vector.Matrix4f;
+import net.minecraft.client.renderer.*;
 
 /**
  * Created by lukas on 22.09.14.
